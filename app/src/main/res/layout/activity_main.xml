@@ -10,51 +10,75 @@
         android:id="@+id/tvTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lista Actividades"
-        android:textSize="22sp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="Registro de Actividades"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre de la actividad"
         android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:inputType="text"
-        android:padding="12sp"
-        android:text="Introduce una actividad" />
+        android:layout_marginBottom="12dp"
+        android:hint="Ej: Correr"
+        android:inputType="textCapSentences"
+        android:padding="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Duración (minutos)"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etDuration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:inputType="text"
-        android:padding="12sp"
-        android:text="Introduce duracion estimada en min" />
+        android:layout_marginBottom="12dp"
+        android:hint="Ej: 60"
+        android:inputType="number"
+        android:padding="10dp" />
 
-    <EditText
-        android:id="@+id/etType"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:inputType="text"
-        android:padding="12sp"
-        android:text="Tipo actividad" />
+        android:text="Tipo de deporte"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spType"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:contentDescription="Seleccionar tipo de deporte" />
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Guardar" />
+        android:text="Guardar Registro"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#CCCCCC"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvActivities"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        />
+        android:layout_weight="1" />
+
 </LinearLayout>
