@@ -1,6 +1,9 @@
 package com.example.actividadfisica
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -16,32 +19,24 @@ import com.example.actividadfisica.ui.theme.ActividadFisicaTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            ActividadFisicaTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+
+        //vincular la actividad
+        setContentView(R.layout.activity_main)
+        //elementos del interfaz
+        val tvTitulo= findViewById<TextView>(R.id.tvTitulo)
+        val etActivity= findViewById<EditText>(R.id.etActivity)
+        val etDuration= findViewById<EditText>(R.id.etDuration)
+        val btnSave= findViewById<Button>(R.id.btnSave)
+
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     ActividadFisicaTheme {
-        Greeting("Android")
+
     }
 }
