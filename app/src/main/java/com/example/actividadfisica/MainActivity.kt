@@ -1,5 +1,6 @@
 package com.example.actividadfisica
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -27,6 +28,7 @@ class MainActivity : ComponentActivity() {
         val etDuration = findViewById<EditText>(R.id.etDuration)
         val spType = findViewById<Spinner>(R.id.spType)
         val btnSave = findViewById<Button>(R.id.btnSave)
+        val btnGame= findViewById<Button>(R.id.btnSave)
 
         val opcionesDeporte = listOf("Cardio", "Fuerza / Tonificación", "HIIT / Alta Intensidad","Natación",
             "Aerobicos / Spinning",
@@ -69,6 +71,11 @@ class MainActivity : ComponentActivity() {
             etDuration.text.clear()
             spType.setSelection(0)
 
+        }
+
+        btnGame.setOnClickListener {
+            val intent = Intent (this, RealTimeSession::class.java)
+            startActivity(intent)
         }
 
     }
