@@ -101,25 +101,33 @@ class RealTimeSession : ComponentActivity(), SensorEventListener {
             tvShakeValue.text = String.format("%.2f", shakeIntensity)
 
             // 6) Clasificamos el nivel de agitación según el valor obtenido.
-            val levelText=""
-            when {
+            val levelText=when {
                 shakeIntensity < 1f -> {
+                    container.setBackgroundColor(Color.WHITE)// Casi sin movimiento
+                    tvShakeLevel.setTextColor(Color.BLACK)
+                    tvShakeValue.setTextColor(Color.BLACK)
+                    // texto al final, porque es el return
                     "Nivel: quieto"
-                    container.setBackgroundColor(Color.BLUE)// Casi sin movimiento
-                }
-                shakeIntensity < 2f -> {
-                    "Nivel: suave"
-                    container.setBackgroundColor(Color.CYAN)
-                    // Movimiento leve
                 }
                 shakeIntensity < 4f -> {
-                    "Nivel: medio"
+                    container.setBackgroundColor(Color.CYAN)// Movimiento leve
+                    tvShakeLevel.setTextColor(Color.BLACK)
+                    tvShakeValue.setTextColor(Color.BLACK)
+                    "Nivel: suave"
+
+                }
+                shakeIntensity < 8f -> {
                     container.setBackgroundColor(Color.MAGENTA)// Movimiento moderado
+                    tvShakeLevel.setTextColor(Color.WHITE)
+                    tvShakeValue.setTextColor(Color.WHITE)
+                    "Nivel: medio"
+
                 }
                 else -> {
+                    container.setBackgroundColor(Color.RED) // Movimiento muy fuerte
+                    tvShakeLevel.setTextColor(Color.WHITE)
+                    tvShakeValue.setTextColor(Color.WHITE)
                     "Nivel: depravado"
-                    container.setBackgroundColor(Color.RED)
-                    // Movimiento muy fuerte
                 }
             }
 

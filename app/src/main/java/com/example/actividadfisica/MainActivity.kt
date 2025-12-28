@@ -54,6 +54,9 @@ class MainActivity : ComponentActivity() {
             val duration = etDuration.text.toString().trim().toIntOrNull()
             val type = spType.selectedItem.toString()
 
+            // LOCAL DATE TIME  solo funciona en versiones superiores a la 24
+            // Gradle -> App -> Open Gradle Config -> minSdk : 26
+
             val timeNow = LocalDateTime.now()   // cogemos la fecha y hora del sistema
             val format = DateTimeFormatter.ofPattern("dd/MM HH:mm")   // formateamos
             val fecha = timeNow.format(format).toString()    // convertimos a string
@@ -73,6 +76,7 @@ class MainActivity : ComponentActivity() {
 
         }
 
+        // AQUI LLAMAMOS A LA ACTIVITY GAME
         btnGame.setOnClickListener {
             val intent = Intent (this, RealTimeSession::class.java)
             startActivity(intent)
