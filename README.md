@@ -41,11 +41,14 @@ Este proyecto tiene dos funcionalidades principales:
     * Manipulación programática de propiedades de vista (`setBackgroundColor`, `setTextColor`).
 
 ## 📸 Capturas de Pantalla 
-
-<img width="303" height="auto" alt="Captura de pantalla 2025-12-28 132023" src="https://github.com/user-attachments/assets/f4aaf1d1-5cff-4807-8f36-66decd4276ee" />
-
-<img width="303" height="auto" alt="Captura de pantalla 2025-12-28 134757" src="https://github.com/user-attachments/assets/c7cc8174-085f-4842-889d-8fe3e78baae4" />
-
+<p align="center">
+   ### Vista Principal ActivityMain
+<img width="250" alt="Captura de pantalla 2025-12-28 132023" src="https://github.com/user-attachments/assets/f4aaf1d1-5cff-4807-8f36-66decd4276ee" />
+</p>
+<p align="center">
+   ### Vista GameSensor
+<img width="250"  alt="Captura de pantalla 2025-12-28 134757" src="https://github.com/user-attachments/assets/c7cc8174-085f-4842-889d-8fe3e78baae4" />
+</p>
 ## 🔜 Próximos Pasos (Roadmap)
 
 * [ ] **Persistencia de Datos:** Guardar la lista de actividades en memoria local usando `SharedPreferences` y `Gson` (JSON).
