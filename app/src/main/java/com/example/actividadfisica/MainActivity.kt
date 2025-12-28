@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         val etDuration = findViewById<EditText>(R.id.etDuration)
         val spType = findViewById<Spinner>(R.id.spType)
         val btnSave = findViewById<Button>(R.id.btnSave)
-        val btnGame= findViewById<Button>(R.id.btnSave)
+        val btnGame= findViewById<Button>(R.id.btnGame)
 
         val opcionesDeporte = listOf("Cardio", "Fuerza / Tonificación", "HIIT / Alta Intensidad","Natación",
             "Aerobicos / Spinning",

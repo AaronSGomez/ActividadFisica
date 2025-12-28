@@ -6,12 +6,16 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 import kotlin.math.abs
 import kotlin.math.sqrt
 
+// IMPORT DE LA CLASE ENCARGADA DEL COLOR
+import android.graphics.Color
+import android.widget.LinearLayout
 
-class RealTimeSession : AppCompatActivity(), SensorEventListener {
+// me daba fallo la app por usar el appCompactActivity() ComponentActivity() soluciona error (mas moderno)
+class RealTimeSession : ComponentActivity(), SensorEventListener {
 
     // TextView donde se mostrará la intensidad de la agitación
     // en formato numérico (ej.: 1.25, 3.80…).
@@ -41,9 +45,14 @@ class RealTimeSession : AppCompatActivity(), SensorEventListener {
     // y la aceleración anterior.
     private var shakeIntensity = 0f
 
+    // Para cambiar el fondo debemos crear una variable que coja el contenedor
+    private lateinit var container: LinearLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+        container = findViewById<LinearLayout>(R.id.gameLayout)
+
 
         // Vinculación de los TextView definidos en el XML.
         tvShakeValue = findViewById(R.id.tvShakeValue)
@@ -92,12 +101,29 @@ class RealTimeSession : AppCompatActivity(), SensorEventListener {
             tvShakeValue.text = String.format("%.2f", shakeIntensity)
 
             // 6) Clasificamos el nivel de agitación según el valor obtenido.
-            val levelText = when {
-                shakeIntensity < 1f -> "Nivel: quieto"    // Casi sin movimiento
-                shakeIntensity < 2f -> "Nivel: suave"     // Movimiento leve
-                shakeIntensity < 4f -> "Nivel: medio"     // Movimiento moderado
-                else -> "Nivel: depravado"                // Movimiento muy fuerte
+            val levelText=""
+            when {
+                shakeIntensity < 1f -> {
+                    "Nivel: quieto"
+                    container.setBackgroundColor(Color.BLUE)// Casi sin movimiento
+                }
+                shakeIntensity < 2f -> {
+                    "Nivel: suave"
+                    container.setBackgroundColor(Color.CYAN)
+                    // Movimiento leve
+                }
+                shakeIntensity < 4f -> {
+                    "Nivel: medio"
+                    container.setBackgroundColor(Color.MAGENTA)// Movimiento moderado
+                }
+                else -> {
+                    "Nivel: depravado"
+                    container.setBackgroundColor(Color.RED)
+                    // Movimiento muy fuerte
+                }
             }
+
+
 
             // Mostramos el texto interpretado en pantalla.
             tvShakeLevel.text = levelText
