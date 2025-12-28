@@ -10,12 +10,14 @@ import androidx.activity.ComponentActivity
 import kotlin.math.abs
 import kotlin.math.sqrt
 
-// IMPORT DE LA CLASE ENCARGADA DEL COLOR
+// IMPORT DE LA CLASE ENCARGADA DEL COLOR NECESARIO PARA EL FONDO
 import android.graphics.Color
 import android.widget.LinearLayout
 
 // me daba fallo la app por usar el appCompactActivity() ComponentActivity() soluciona error (mas moderno)
 class RealTimeSession : ComponentActivity(), SensorEventListener {
+    // Texview titulo, para modificar que se modifique el color de la letra
+    private lateinit var tvTitulo : TextView
 
     // TextView donde se mostrará la intensidad de la agitación
     // en formato numérico (ej.: 1.25, 3.80…).
@@ -45,14 +47,14 @@ class RealTimeSession : ComponentActivity(), SensorEventListener {
     // y la aceleración anterior.
     private var shakeIntensity = 0f
 
-    // Para cambiar el fondo debemos crear una variable que coja el contenedor
+    // Para cambiar el fondo debemos crear una variable que contenga el layout
     private lateinit var container: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         container = findViewById<LinearLayout>(R.id.gameLayout)
-
+        tvTitulo = findViewById(R.id.tvShakeTitle)
 
         // Vinculación de los TextView definidos en el XML.
         tvShakeValue = findViewById(R.id.tvShakeValue)
@@ -101,11 +103,15 @@ class RealTimeSession : ComponentActivity(), SensorEventListener {
             tvShakeValue.text = String.format("%.2f", shakeIntensity)
 
             // 6) Clasificamos el nivel de agitación según el valor obtenido.
+                // cambiamos el color de fondo
+                // cambiamos los colores de los texfield en funcion del color de fondo
+                // retornamos el texto a mostrar, siempre al final.
             val levelText=when {
                 shakeIntensity < 1f -> {
                     container.setBackgroundColor(Color.WHITE)// Casi sin movimiento
                     tvShakeLevel.setTextColor(Color.BLACK)
                     tvShakeValue.setTextColor(Color.BLACK)
+                    tvTitulo.setTextColor(Color.BLACK)
                     // texto al final, porque es el return
                     "Nivel: quieto"
                 }
@@ -113,6 +119,7 @@ class RealTimeSession : ComponentActivity(), SensorEventListener {
                     container.setBackgroundColor(Color.CYAN)// Movimiento leve
                     tvShakeLevel.setTextColor(Color.BLACK)
                     tvShakeValue.setTextColor(Color.BLACK)
+                    tvTitulo.setTextColor(Color.BLACK)
                     "Nivel: suave"
 
                 }
@@ -120,6 +127,7 @@ class RealTimeSession : ComponentActivity(), SensorEventListener {
                     container.setBackgroundColor(Color.MAGENTA)// Movimiento moderado
                     tvShakeLevel.setTextColor(Color.WHITE)
                     tvShakeValue.setTextColor(Color.WHITE)
+                    tvTitulo.setTextColor(Color.WHITE)
                     "Nivel: medio"
 
                 }
@@ -127,6 +135,7 @@ class RealTimeSession : ComponentActivity(), SensorEventListener {
                     container.setBackgroundColor(Color.RED) // Movimiento muy fuerte
                     tvShakeLevel.setTextColor(Color.WHITE)
                     tvShakeValue.setTextColor(Color.WHITE)
+                    tvTitulo.setTextColor(Color.WHITE)
                     "Nivel: depravado"
                 }
             }
